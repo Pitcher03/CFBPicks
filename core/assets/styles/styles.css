@@ -1,0 +1,741 @@
+/*----------------Begin General Styles-------------------*/
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    width: 100%;
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #ffffff;
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/*----------------Begin Login Page-------------------*/
+
+.chart-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; 
+}
+
+#login-form-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none; 
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 320px;
+    opacity: 0;
+    padding: 15px;
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 10px;
+    transition: opacity 1.5s ease-in-out;
+    z-index: 2;
+    gap: 15px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #222;
+    border-radius: 8px;
+    color: #222;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.form-input::placeholder {
+    color: #444;
+}
+
+.login-button {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: #fff;
+    border: none;
+    border-radius: 8px;
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.login-button:hover {
+    background-color: #ccc;
+}
+
+.error-message {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    display: none;
+}
+
+@keyframes slide-up {
+    to {
+        top: -180px;
+    }
+}
+
+.slide-up {
+    animation: slide-up 1.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/*----------------Begin Home Page-------------------*/
+
+.navbar {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 0;
+    z-index: 1020; /* A high z-index to stay on top */
+    border-bottom: 1px solid #333;
+}
+
+.navbar-brand img {
+    border-radius: 50%;
+}
+
+.dropdown-menu {
+    background-color: #2c2c2c;
+    border: 1px solid #444;
+}
+
+.dropdown-item {
+    color: #e0e0e0;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+    color: #ffffff;
+    background-color: #4a4a4a;
+}
+
+.dropdown-divider {
+    border-top: 1px solid #444;
+}
+
+.card {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.card:not(.no-hover):hover,
+#card-mypicks:hover, 
+#card-allpicks:hover, 
+#card-leaderboard:hover, 
+#card-futures:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+#card-mypicks, #card-allpicks, #card-leaderboard, #card-futures {
+    cursor: pointer;
+}
+
+.card-title {
+    color: #ffffff;
+}
+
+.card-text {
+    color: #a0a0a0;
+}
+
+#card-mypicks { border-color: #a33; }
+#card-allpicks { border-color: #3a3; }
+#card-leaderboard { border-color: #aa3; }
+#card-futures { border-color: #33a; }
+
+#card-mypicks:hover { border-color: #f55; }
+#card-allpicks:hover { border-color: #5f5; }
+#card-leaderboard:hover { border-color: #ff5; }
+#card-futures:hover { border-color: #55f; }
+
+
+.overview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid #333;
+    color: #a0a0a0;
+}
+
+.overview-body {
+    display: flex;
+    flex-grow: 1;
+    gap: 1rem;
+}
+
+.overview-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.overview-row-header {
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    border-bottom: 1px solid #333;
+    padding-bottom: 0.5rem;
+}
+
+.overview-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.25rem 0;
+    color: #a0a0a0;
+}
+
+#countdown-card {
+    min-height: 150px;
+}
+
+#countdown-timer {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    font-weight: bold;
+    letter-spacing: 2px;
+    z-index: 1;
+    text-shadow: 0 0 10px black;
+}
+
+/*----------------Begin My Picks Page-------------------*/
+
+.page-header {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+/*
+.page-header h1 {
+    margin: 0;
+    text-align: center;
+    width: 100%;
+    order: 1; 
+}
+*/
+
+.title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+}
+
+#subtitle, #confidence {
+    font-size: 1.25rem;
+    color: #a0a0a0; 
+    font-weight: 400; 
+    margin-top: -0.25rem; 
+}
+
+.info-box {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: .375rem;
+    padding: 1rem;
+    flex-grow: 1; 
+    min-width: 200px;
+    max-width: 300px;
+    order: 2; 
+}
+
+@media (min-width: 992px) {
+    .page-header {
+        justify-content: space-evenly;
+        flex-wrap: nowrap; 
+    }
+
+    .title-container {
+        width: auto; 
+        order: 2; 
+    }
+
+    .info-box {
+        flex-grow: 0; 
+        width: 250px; 
+    }
+
+    .page-header .info-box:first-of-type {
+        order: 1; 
+    }
+
+    .page-header .info-box:last-of-type {
+        order: 3; 
+    }
+}
+
+.info-box-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #a0a0a0;
+}
+
+#games-grid {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.game-card {
+    background-color: #1e1e1e;
+    border: 2px solid #444;
+    border-radius: .375rem;
+    overflow: hidden;
+    max-width: 400px;
+    margin: 0 auto;
+    transition: border-color 0.3s;
+}
+
+.game-card.status-pregame   { border-color: #ffc107; }
+.game-card.status-live      { border-color: #3d5afe; }
+.game-card.status-correct   { border-color: #28a745; }
+.game-card.status-incorrect { border-color: #dc3545; }
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    background-color: #2a2a2a;
+    font-size: 0.8rem;
+    color: #a0a0a0;
+}
+
+.starting-soon      { background-color: #3a2504 !important; }
+.starting-very-soon { background-color: #3a1515 !important; }
+
+.point-value {
+    font-weight: bold;
+    color: #fff;
+}
+
+.status-waiting     { color: #ffc107; }
+.status-active      { color: #3d5afe; }
+.status-complete    { color: #6c757d; }
+
+.game-body {
+    padding: 0.75rem;
+}
+
+.team-row {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+    transition: background-color 0.2s;
+    border-radius: 4px;
+}
+
+.team-row.pickable:hover {
+    background-color: #2a2a2a;
+}
+
+.team-row.pickable {
+    cursor: pointer;
+}
+
+.team-logo {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.team-name {
+    flex-grow: 1;
+    font-weight: 500;
+    color: #fff;
+}
+
+.team-score {
+    font-weight: bold;
+    min-width: 30px;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.pick-indicator {
+    width: 24px;
+    text-align: center;
+}
+
+.pick-icon {
+    margin-left: auto;
+    margin-right: -10px;
+    font-size: 1.2rem;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.pick-icon.visible {
+    opacity: 1;
+}
+
+.pick-made { color: #fff; }
+.pick-locked { color: #6c757d; }
+.pick-correct { color: #28a745; }
+.pick-incorrect { color: #dc3545; }
+
+.submit-picks-container {
+    position: sticky;
+    bottom: 0;
+    padding: 1rem;
+    background: linear-gradient(to top, rgba(18, 18, 18, 1), rgba(18, 18, 18, 0));
+    text-align: center;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+}
+
+#submit-picks-btn:disabled {
+    cursor: not-allowed;
+    background-color: #444;
+    border-color: #444;
+}
+
+.unpicked {
+    background-color: #373737;
+}
+
+.tiebreaker-card, .futures-card {
+    border-color: #0dcaf0;
+    border-width: 2px;
+}
+
+.tiebreaker-header-text, .futures-header-text {
+    font-weight: bold;
+    color: #0dcaf0;
+}
+
+.tiebreaker-body, .futures-body {
+    padding: 0.75rem;
+    text-align: center;
+}
+
+.tiebreaker-question, .tiebreaker-input, .futures-question, .futures-input {
+    padding: 0.5rem 0;
+    margin: 0;
+}
+
+.tiebreaker-question, .futures-question {
+    color: #e0e0e0;
+}
+
+.tiebreaker-input, .futures-input {
+    background-color: #333;
+    border: 1px solid #555;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    -moz-appearance: textfield;
+}
+
+.tiebreaker-input {
+    width: 100px;
+}
+
+.tiebreaker-input::-webkit-outer-spin-button,
+.tiebreaker-input::-webkit-inner-spin-button,
+.futures-input::-webkit-inner-spin-button,
+.futures-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/*----------------Begin Admin Page-------------------*/
+
+.admin-card {
+    cursor: pointer;
+    border: 2px solid #444;
+}
+
+.admin-card.selected {
+    border-color: #198754;
+    box-shadow: 0 0 15px rgba(25, 135, 84, 0.5);
+}
+
+.admin-card .game-header {
+    justify-content: center;
+}
+
+.admin-card .game-body {
+    height: 120px;
+}
+
+.team-value-label {
+    color: #a0a0a0;
+}
+
+.spread-text {
+    color: #a0a0a0;
+    font-size: 0.9em;
+    margin-left: 4px;
+}
+
+.point-input {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 4px;
+    width: 60px;
+    text-align: center;
+    -moz-appearance: textfield;
+}
+
+.point-input::-webkit-outer-spin-button,
+.point-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#add-games-btn:disabled {
+    cursor: not-allowed;
+    background-color: #444;
+    border-color: #444;
+}
+
+.game-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    background-color: #2a2a2a;
+    gap: 10px;
+}
+
+.bonus-input {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 4px;
+    width: 60px;
+    text-align: center;
+    -moz-appearance: textfield;
+}
+
+.bonus-input::-webkit-outer-spin-button,
+.bonus-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.bonus-input-placeholder {
+    width: 125px; 
+    margin-left: auto;
+}
+
+.bonus-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.bonus-label {
+    color: #a0a0a0;
+    font-size: 0.9em;
+}
+
+#offered-games-section hr {
+    border-top: 1px solid #444;
+}
+
+.disabled-card {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: #2a2a2a;
+}
+
+.disabled-card .point-input,
+.disabled-card .bonus-input {
+    background-color: #333;
+    border-color: #444;
+    cursor: not-allowed;
+}
+
+.disabled-card:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.disabled-card .team-row:hover {
+    background-color: transparent;
+}
+
+.game-header .point-value {
+    font-weight: bold;
+    color: #fff;
+}
+
+.bonus-text {
+    font-weight: bold;
+    color: #ffc107;
+    margin-left: 8px;
+}
+
+.winning-team .team-name, .winning-team .team-score {
+    font-weight: 900;
+    font-style: oblique;
+}
+
+/* --- Styles for All Picks Page --- */
+
+#picks-table {
+    margin-bottom: 0;
+    min-width: 100%;
+    border: 1px solid #333;
+    border-radius: .375rem;
+}
+
+#picks-table th, #picks-table td {
+    vertical-align: middle;
+    text-align: center;
+    white-space: nowrap;
+    min-width: 100px;
+}
+
+#picks-table th {
+    background-color: #2a2a2a;
+    padding-bottom: 9px;
+}
+
+#picks-table th .game-header-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.game-header-logos img {
+    width: 24px;
+    height: 24px;
+}
+
+#picks-table td {
+    height: 37px;
+}
+
+.pick-cell {
+    padding: 0.5rem !important;
+}
+
+.pick-cell img {
+    width: 28px;
+    height: 28px;
+}
+
+.pick-cell.confidence-pick img {
+    width: 22px;
+    height: 22px;
+    margin: 0px 5px;
+}
+
+.pick-cell-waiting { background-color: rgba(255, 193, 7, 0.15) !important; }
+.pick-cell-live { background-color: rgba(61, 90, 254, 0.15) !important; }
+.pick-cell-correct { background-color: rgba(40, 167, 69, 0.2) !important; }
+.pick-cell-incorrect { background-color: rgba(220, 53, 69, 0.2) !important; }
+
+.current-user-row {
+    border: 1px solid #999;
+}
+
+#picks-table tbody tr:nth-child(even) {
+    background-color: #1c1c1c;
+}
+
+.winning-player {
+    color: goldenrod;
+    font-weight: bold;
+}
+
+/* --- Styles for Leaderboard Page --- */
+
+#leaderboard-table {
+    margin-bottom: 0;
+    min-width: 100%;
+    border: 1px solid #333;
+    border-radius: .375rem;
+}
+
+#leaderboard-table th, #leaderboard-table td {
+    vertical-align: middle;
+    text-align: center;
+    white-space: nowrap;
+    min-width: 75px;
+    padding: 5px 0px;
+}
+
+#leaderboard-table th {
+    background-color: #2a2a2a;
+    padding: 9px 0px;
+}
+
+#leaderboard-table tbody tr:nth-child(even) {
+    background-color: #1c1c1c;
+}
+
+/* --- Styles for Futures Page --- */
+
+#futures-table {
+    margin-bottom: 0;
+    min-width: 100%;
+    border: 1px solid #333;
+    border-radius: .375rem;
+}
+
+#futures-table th, #futures-table td {
+    vertical-align: middle;
+    text-align: center;
+    white-space: nowrap;
+    min-width: 60px;
+    padding: 0.5rem;
+}
+
+#futures-table th {
+    background-color: #2a2a2a;
+    padding: 9px 0px;
+}
+
+#futures-table tbody tr:nth-child(even) {
+    background-color: #1c1c1c;
+}
