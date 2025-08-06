@@ -1,7 +1,7 @@
 # CFBPicks: A Live College Football Pick'em League
 A custom pick'em platform with unique scoring and automated user notifications.
 
-## About The Project
+## About
 CFBPicks is a full-stack web application built for college football fans seeking a more engaging and feature-rich alternative to mainstream fantasy football platforms. My first large-scale side project, I aimed to create a fun and competitive environment for users to pick weekly winners and compete in a season-long league.
 
 The site is engineered with a Bootstrap / dynamic JavaScript interface and a secure PHP backend, utilizing the PhpMyAdmin database to meticulously manage all user accounts, weekly game schedules, and user-submitted picks. Player scores are updated frequently via a CPanel Cron Job. Web hosting is managed by GoDaddy.
